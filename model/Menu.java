@@ -8,10 +8,11 @@ public class Menu {
 
     public void printMenu(){
         System.out.println(
-        "¿Qué quiere hacer?" +
-        "Presione 1 para acceder a sus gastos "+
-        "Presione 2 para acceder a sus vencimientos"+
-        "Presione 3 para generar un informe de sus gastos"); //TODO ver esto
+        "¿Qué quiere hacer? \n" +
+        "Presione 1 para acceder a sus gastos\n"+
+        "Presione 2 para acceder a sus vencimientos\n"+
+        "Presione 3 para ver los ingresos\n"+
+        "Presione 4 para salir");
     }
 
 

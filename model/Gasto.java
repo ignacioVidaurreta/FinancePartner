@@ -15,7 +15,8 @@ public class Gasto {
     
     public Gasto(String nombre, int dia, int mes, int anio, double monto ){
         this.nombre = nombre;
-        this.fecha = new Date(anio,mes,dia);
+        int mesAux=mes-1;
+        this.fecha = new Date(anio,mesAux,dia);
         this.monto = monto;
     }
     

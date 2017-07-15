@@ -1,3 +1,4 @@
+package FinancePartner.model;
 import java.util.Date;
 
 public class Vencimiento {
@@ -9,6 +10,7 @@ public class Vencimiento {
     public Vencimiento(String nombre,int dia, int mes, int anio){
 
         this.nombre = nombre;
+        int mesAux=mes-1;
         fechaVencimiento =  new Date(anio, mes, dia);
     }
 

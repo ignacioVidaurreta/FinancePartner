@@ -3,32 +3,30 @@ package FinancePartner.model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Guido
- */
 public class Gastos {
 
     private ArrayList<Gasto> gastos;
-    private Menu menu;
-    
+    private Scanner scanner;
     public Gastos(){
-        menu= new Menu();
         gastos= new ArrayList<Gasto>();
+        scanner = new Scanner(System.in);
     }
     
     private void agregarGasto(){
         System.out.println("Ingrese el nombre del gasto");
-        Scanner reader= new Scanner(System.in);        
-        String nombre= reader.next();
+        String nombre= scanner.nextLine();
         System.out.println("Ingrese el dia el cual fue realizado el gasto");
-        int dia = reader.nextInt();
+        int dia = scanner.nextInt();
+        scanner.nextLine(); //Limpia el buffer
         System.out.println("Ingrese el mes el cual fue realizado el gasto");
-        int mes = reader.nextInt();
+        int mes = scanner.nextInt();
+        scanner.nextLine(); //Limpia el buffer
         System.out.println("Ingrese el año el cual fue realizado el gasto");
-        int anio = reader.nextInt();
+        int anio = scanner.nextInt();
+        scanner.nextLine(); //Limpia el buffer
         System.out.println("Ingrese el monto que gasto");
-        double monto = reader.nextDouble();
+        double monto = scanner.nextDouble();
+        scanner.nextLine(); //Limpia el buffer
 
         gastos.add(new Gasto(nombre,dia,mes,anio,monto));        
     }
@@ -36,29 +34,34 @@ public class Gastos {
     private void imprimirGastos(){
         for(Gasto g: gastos)
             System.out.println(g);
+        System.out.println("");
     }
     
     private boolean validarMenuOpcion(int i){
-        if(i!=1 || i!=2 || i!=3)
-            return false;
-        return true;
+        return i!=1 && i!=2 && i!=3;
+
     }
     
     public void gastosMenu(){
         int option;
-        System.out.println("¿Que desea realizar?");
-        System.out.println("1. Mostrar resultados");
-        System.out.println("2. Agregar gasto");
-        System.out.println("3. Volver");
-        Scanner reader= new Scanner(System.in);
-        option= reader.nextInt();
-        while(validarMenuOpcion(option)){
-            option= reader.nextInt();
-        }
-        if(option==1)
-            imprimirGastos();
-        if(option==2)
-            agregarGasto();
-        menu.printMenu();
+        do {
+            System.out.println("¿Que desea realizar?");
+            System.out.println("1. Mostrar resultados");
+            System.out.println("2. Agregar gasto");
+            System.out.println("3. Volver");
+            option = scanner.nextInt();
+            while (validarMenuOpcion(option)) {
+                System.out.print("Valor inválido, ingrese otro: ");
+                option = scanner.nextInt();
+            }
+            if (option == 1) {
+                scanner.nextLine();
+                imprimirGastos();
+            }
+            if (option == 2) {
+                scanner.nextLine();
+                agregarGasto();
+            }
+        }while(option != 3);
     }
 }
