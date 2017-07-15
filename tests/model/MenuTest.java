@@ -1,5 +1,5 @@
 package FinancePartner.tests.model;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import FinancePartner.model.Gastos;
 import FinancePartner.model.Informe;
